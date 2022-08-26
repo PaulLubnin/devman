@@ -2,7 +2,6 @@ import argparse
 import datetime
 from collections import defaultdict
 from http.server import HTTPServer, SimpleHTTPRequestHandler
-from pprint import pprint
 
 import pandas as pd
 from jinja2 import Environment, FileSystemLoader, select_autoescape
@@ -10,30 +9,29 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 def get_winery_age():
     """
-    функция принимает число и определяет подходящее окончание
+    функция определяет подходящее окончание
     """
 
     founding_year = 1920
-    founding_date = datetime.datetime(year=founding_year, month=1, day=1)
     today = datetime.datetime.now()
-    winery_age = int((today - founding_date).days / 365)
+    winery_age = today.year - founding_year
 
     if 21 > winery_age > 4 or 11 <= winery_age % 100 <= 14:
-        return f'Уже {winery_age} лет с вами'
+        return f'уже {winery_age} лет с вами'
 
     if winery_age % 10 == 1:
-        return f'Уже {winery_age} год с вами'
+        return f'уже {winery_age} год с вами'
 
     if 1 < winery_age % 10 < 5:
-        return f'Уже {winery_age} года с вами'
+        return f'уже {winery_age} года с вами'
 
-    return f'Уже {winery_age} лет с вами'
+    return f'уже {winery_age} лет с вами'
 
 
-def categorization_drinks(wines: list):
+def set_drinks_by_category(wines: list):
     """
-    функция принмает словарь c винами, разбивает елементы по категориям и возвращает новый словарь с ключами категориями
-    и значениями из изначального словаря
+    функция принмает список словарей c винами, разбивает елементы по категориям и возвращает новый словарь с ключами
+    категориями и значениями из изначального словаря
     :param wines:
     :return:
     """
@@ -66,7 +64,7 @@ def main():
 
     rendered_page = template.render(
         winery_age=get_winery_age(),
-        wine_df=categorization_drinks(wine_df)
+        wines_catalog=set_drinks_by_category(wine_df)
     )
 
     with open('index.html', 'w', encoding="utf8") as file:

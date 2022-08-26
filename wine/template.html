@@ -107,30 +107,30 @@
                     </div>
                     <div class="row">
 
-                        {% for category, wines in wine_df.items() %}
-                        <div class="col-12 section-title text-center mb-5">
-                            <h2 class="d-block">{{ category }}</h2>
-                        </div>
-                        {% for wine in wines %}
-                        <div class="col-lg-4 mb-5 col-md-6">
-                            <div class="wine_v_1 text-center pb-4 pt-5">
-                                <img alt="Image" class="img-fluid" src="images/{{ wine['Картинка'] }}">
-                                {% if wine['Акция'] %}
-                                <img src="assets/profitable.png"
-                                     style="width:10rem;height: 10rem;position:absolute;right: -20px;top: -20px;" alt="">
-                                {% endif %}
-                                <div>
-                                    <h3 class="heading mt-3 mb-3 text-dark">{{ wine['Название'] }}</h3>
-                                    <p>
-                                        {% if wine['Сорт'] %}
-                                        Сорт винограда - {{ wine['Сорт'] }}<br/>
-                                        {% endif %}
-                                        <span class="price">{{ wine['Цена'] }} р.</span>
-                                    </p>
-                                </div>
+                        {% for category, wines in wines_catalog.items() %}
+                            <div class="col-12 section-title text-center mb-5">
+                                <h2 class="d-block">{{ category }}</h2>
                             </div>
-                        </div>
-                        {% endfor %}
+                            {% for wine in wines %}
+                                <div class="col-lg-4 mb-5 col-md-6">
+                                    <div class="wine_v_1 text-center pb-4 pt-5">
+                                        <img alt="Image" class="img-fluid" src="images/{{ wine['Картинка'] }}">
+                                        {% if wine['Акция'] %}
+                                            <img src="assets/profitable.png"
+                                                 style="width:10rem;height: 10rem;position:absolute;right: -20px;top: -20px;" alt="">
+                                        {% endif %}
+                                        <div>
+                                            <h3 class="heading mt-3 mb-3 text-dark">{{ wine['Название'] }}</h3>
+                                            <p>
+                                                {% if wine['Сорт'] %}
+                                                    Сорт винограда - {{ wine['Сорт'] }}<br/>
+                                                {% endif %}
+                                                <span class="price">{{ wine['Цена'] }} р.</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
                         {% endfor %}
                     </div>
                 </div>
@@ -142,7 +142,7 @@
                     <div class="row justify-content-center text-center align-items-center">
                         <div class="col-md-8">
                             <h2 style="font-size: 3rem;">проверено временем</h2>
-                            <span class="sub-title" style="font-size: 2.5rem;">уже 111 лет с вами</span>
+                            <span class="sub-title" style="font-size: 2.5rem;">{{ winery_age }}</span>
                         </div>
                     </div>
                 </div>

@@ -6,8 +6,18 @@
 
 - Скачайте код
 - Откройте командною строку в папке проекта
-- Установитье зависимости `python3 pip install -r requirements.txt`
-- Запустите сайт командой `python3 main.py`, где `--path_to_data_file` путь к файлу с данными
+- Установитье зависимости
+  
+  ```
+  python3 pip install -r requirements.txt
+  ```
+  
+- Запустите сайт командой 
+    
+    ```
+    python3 main.py
+    ```
+    где `--path_to_data_file` путь к файлу с данными
 - Перейдите на сайт по адресу [http://127.0.0.1:8000/index.html](http://127.0.0.1:8000/index.html).
 
 ## Данные 
